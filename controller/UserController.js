@@ -70,5 +70,34 @@ const loginUser = async (req, res) => {
   }
 };
 
+const generateNewToken = async (req, res) => {
+  try {
+    const refreshToken = await RefreshToken.find({
+      refresh_token: req.header("refresh-token"),
+    });
+    if (!refreshToken) {
+      return res.status(400).json({ message: "Need to login again" });
+    }
+    const user = req.user;
+    const authToken = jwt.sign(
+      {
+        _id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+    return res.status(200).json({
+      message: "new token generated",
+      token: authToken,
+    });
+  } catch (e) {
+    res.status(400).json({ message: err.message });
+  }
+};
 
-module.exports = { signupUser, loginUser };
+module.exports = { signupUser, loginUser, generateNewToken };

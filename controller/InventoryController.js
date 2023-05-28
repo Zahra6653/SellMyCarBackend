@@ -79,6 +79,7 @@ const addInventoryCar = async (req, res) => {
   try {
     const data = req.body;
     const newCar = await MarketplaceInventory.create(data);
+   
     res.status(201).json({
       message: "Car added successfully",
       car: newCar,
@@ -93,7 +94,7 @@ const addInventoryCar = async (req, res) => {
 
 const getAllCars = async (req, res) => {
   try {
-    const cars = await MarketplaceInventory.find();
+    const cars = await MarketplaceInventory.find().populate("model");
     if (!cars) {
       return res.status(400).send({
         message: "No car found",
@@ -169,13 +170,14 @@ const updateCarsById = async (req, res) => {
     if (!updatedCar) {
       return res.status(404).json({ error: "Car not found" });
     }
+    const cars= await MarketplaceInventory.find()
 
     res.status(200).send({
       message: "Car Updated succesfully",
-      updatedCar: updatedCar,
+      updatedCar: cars,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Internal Error",
       error: e,
     });
@@ -183,22 +185,16 @@ const updateCarsById = async (req, res) => {
 };
 
 const deleteCarById = async (req, res) => {
+  const carId = req.params.id;
   try {
-    const carId = req.params.id;
-    const updatedCar = await MarketplaceInventory.findByIdAndUpdate(
-      carId,
-      { deleted: true },
-      { new: true }
-    );
-    if (!updatedCar) {
-      return res.status(404).json({ error: "Car not found" });
+    const deletedCar = await MarketplaceInventory.findByIdAndRemove(carId);
+    if (!deletedCar) {
+      return res.status(404).json({ message: "Car not found" });
     }
-    res.status(200).send({
-      message: "Car deleted succesfully",
-    });
+    res.status(200).send({ message: "Car deleted successfully" });
   } catch (error) {
-    console.error("Error deleting car:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error(error);
+    return res.status(500).send({ message: "Internal server error" });
   }
 };
 

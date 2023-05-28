@@ -1,5 +1,6 @@
 const User = require('../model/User')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const Authentication = async (req,res,next)=>{
     try{
@@ -31,5 +32,30 @@ const Authentication = async (req,res,next)=>{
         })
     }
 }
+const verifyAuthToken = async (req,res,next)=>{
+    try{
+        const token = req.header('token');
+        const verified = jwt.verify(token,process.env.JWT_SECRET);
+        req.user = verified;
+        next();
+    }catch(err){
+      return res.status(400).json({
+        message:err.message
+      })
+    }
+   
+}
 
-module.exports = {Authentication}
+const verifyRefreshToken = (req, res, next) => {
+    try {
+      const token = req.header("refresh-token");
+      const verified = jwt.verify(token, process.env.REFRESH_JWT_SECRET);
+      req.user = verified;
+      next();
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
+  };
+
+
+module.exports = {Authentication,verifyAuthToken,verifyRefreshToken}
