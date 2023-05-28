@@ -1,0 +1,93 @@
+[
+    {
+      "modelName": "Tesla Model S",
+      "yearOfModel": 2022,
+      "price": 80000,
+      "colors": ["Black", "White", "Blue"],
+      "mileage": 5000,
+      "power": 670,
+      "maxSpeed": 200
+    },
+    {
+      "modelName": "Porsche 911",
+      "yearOfModel": 2021,
+      "price": 120000,
+      "colors": ["Red", "Silver", "Yellow"],
+      "mileage": 8000,
+      "power": 450,
+      "maxSpeed": 293
+    },
+    {
+      "modelName": "BMW 3 Series",
+      "yearOfModel": 2022,
+      "price": 50000,
+      "colors": ["Black", "White", "Grey"],
+      "mileage": 10000,
+      "power": 255,
+      "maxSpeed": 155
+    },
+    {
+      "modelName": "Mercedes-Benz E-Class",
+      "yearOfModel": 2022,
+      "price": 65000,
+      "colors": ["Blue", "Silver", "Black"],
+      "mileage": 6000,
+      "power": 362,
+      "maxSpeed": 130
+    },
+    {
+      "modelName": "Audi Q7",
+      "yearOfModel": 2021,
+      "price": 70000,
+      "colors": ["White", "Black", "Grey"],
+      "mileage": 9000,
+      "power": 335,
+      "maxSpeed": 155
+    },
+    {
+      "modelName": "Toyota RAV4",
+      "yearOfModel": 2022,
+      "price": 35000,
+      "colors": ["Red", "Silver", "Blue"],
+      "mileage": 5000,
+      "power": 203,
+      "maxSpeed": 120
+    },
+    {
+      "modelName": "Honda CR-V",
+      "yearOfModel": 2022,
+      "price": 32000,
+      "colors": ["Black", "White", "Grey"],
+      "mileage": 6000,
+      "power": 190,
+      "maxSpeed": 124
+    },
+    {
+      "modelName": "Ford F-150",
+      "yearOfModel": 2022,
+      "price": 45000,
+      "colors": ["Blue", "Silver", "Black"],
+      "mileage": 3000,
+      "power": 400,
+      "maxSpeed": 107
+    },
+    {
+      "modelName": "Nissan Rogue",
+      "yearOfModel": 2022,
+      "price": 30000,
+      "colors": ["White", "Silver", "Black"],
+      "mileage": 4000,
+      "power": 181,
+      "maxSpeed": 135
+    },
+    {
+      "modelName": "Chevrolet Silverado",
+      "yearOfModel": 2022,
+      "price": 40000,
+      "colors": ["Black", "Red", "White"],
+      "mileage": 2000,
+      "power": 355,
+      "maxSpeed": 120
+    }
+  ]
+  
