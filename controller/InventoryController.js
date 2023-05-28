@@ -13,7 +13,7 @@ const allModelNames = async (req, res) => {
       cars: carModels,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Error occured",
       error: e,
     });
@@ -22,7 +22,7 @@ const allModelNames = async (req, res) => {
 
 const displayOEMSpecsByModel = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
+
   try {
     if (!id) {
       return res.status(400).send({
@@ -42,7 +42,7 @@ const displayOEMSpecsByModel = async (req, res) => {
       car: car,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Internal Error",
       error: e,
     });
@@ -68,7 +68,7 @@ const displayOEMSpecsByModelNameAndYear = async (req, res) => {
       car: car,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Internal Error",
       error: e,
     });
@@ -85,7 +85,7 @@ const addInventoryCar = async (req, res) => {
       car: newCar,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Internal Error",
       error: e,
     });
@@ -106,7 +106,7 @@ const getAllCars = async (req, res) => {
       cars: cars,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Internal Error",
       error: e,
     });
@@ -131,7 +131,7 @@ const getCarDetails = async (req, res) => {
       carDetails: carDetails,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Internal Error",
       error: e,
     });
@@ -150,7 +150,7 @@ const getAllUsersCar = async (req, res) => {
       cars: userCars,
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "Internal Error",
       error: e,
     });

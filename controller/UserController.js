@@ -13,7 +13,7 @@ const signupUser = async (req, res) => {
       message: "Signup Successful",
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       error: e,
     });
   }
@@ -63,7 +63,7 @@ const loginUser = async (req, res) => {
       },
     });
   } catch (e) {
-    res.status(404).send({
+    res.status(500).send({
       message: "login failed",
       error: e,
     });
@@ -96,7 +96,7 @@ const generateNewToken = async (req, res) => {
       token: authToken,
     });
   } catch (e) {
-    res.status(400).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 };
 
