@@ -79,10 +79,10 @@ const addInventoryCar = async (req, res) => {
   try {
     const data = req.body;
     const newCar = await MarketplaceInventory.create(data);
-   
+    const car = await MarketplaceInventory.find();
     res.status(201).json({
       message: "Car added successfully",
-      car: newCar,
+      car: car,
     });
   } catch (e) {
     res.status(500).send({
@@ -170,7 +170,7 @@ const updateCarsById = async (req, res) => {
     if (!updatedCar) {
       return res.status(404).json({ error: "Car not found" });
     }
-    const cars= await MarketplaceInventory.find()
+    const cars = await MarketplaceInventory.find();
 
     res.status(200).send({
       message: "Car Updated succesfully",
